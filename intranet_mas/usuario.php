@@ -5,17 +5,19 @@
         private $rut;
         private $perfil;
         private $pass;
+        private $correo;
         private $primer_nombre;
         private $segundo_nombre;
         private $primer_apellido;
         private $segundo_apellido;
 
  
-        public function __construct($id = null, $rut = null, $pass = null, $perfil = null, $primer_nombre = null, $segundo_nombre = null, $primer_apellido = null, $segundo_apellido = null){
+        public function __construct($id = null, $rut = null, $pass = null, $correo = null, $perfil = null, $primer_nombre = null, $segundo_nombre = null, $primer_apellido = null, $segundo_apellido = null){
             $this->id = $id;
             $this->rut = $rut;
             $this->perfil = $perfil;
             $this->pass = $pass;
+            $this->rut = $correo;
             $this->primer_nombre = $primer_nombre;
             $this->segundo_nombre = $segundo_nombre;
             $this->primer_apellido = $primer_apellido;
@@ -33,6 +35,9 @@
         }
         public function getPassword(){
             return $this->pass;
+        }
+        public function getCorreo(){
+            return $this->correo;
         }
         public function getNombre(){
             return $this->primer_nombre;
@@ -58,6 +63,9 @@
         }
         public function setPassword($pass){
             $this->pass = $pass;
+        }
+        public function setCorreo(){
+            return $this->$correo;
         }
         public function setNombre($primer_nombre){
             $this->primer_nombre = $primer_nombre;

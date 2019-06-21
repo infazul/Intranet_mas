@@ -35,6 +35,7 @@
         $u->setId($results['id']);
         $u->setRut($results['rut']);
         $u->setPassword($results['password']);
+        $u->setCorreo($results['correo']);
         $u->setPerfil($results['perfil']);
         $u->setNombre($results['primer_nombre']);
         $u->setSegundoNombre($results['segundo_nombre']);

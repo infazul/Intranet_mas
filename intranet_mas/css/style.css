@@ -14,7 +14,19 @@ body {
     width: 300px;
     border-radius: 3px;
     border: 1px solid #eee;
-    margin: 15px auto;
+    margin: 10px auto;
+    background: rgb(224, 220, 220);
+  }
+  textarea[type="texto"]{
+    outline: none;
+    padding: 10px;
+    display: block;
+    width: 600px;
+    height: 200px;
+    border-radius: 3px;
+    border: 1px solid #eee;
+    margin: 10px auto;
+    background: rgb(224, 220, 220);
   }
   
   input[type="submit"] {

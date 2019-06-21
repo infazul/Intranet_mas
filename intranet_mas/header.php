@@ -15,7 +15,7 @@
                         echo '<a href="home_profe.php">Intranet Mas</a>';
                 }elseif($u->getPerfil() == 2){
                         echo '<a href="home_apod.php">Intranet Mas</a>';
-                }elseif($u->getPerfil() == 4){
+                }elseif($u->getPerfil() == 3){
                         echo '<a href="home_alumn.php">Intranet Mas</a>';
                 }}else{
                         echo '<a href="index.php">Intranet Mas</a>';

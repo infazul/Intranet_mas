@@ -5,13 +5,14 @@
 
     if (!empty($_POST['rut']) && !empty($_POST['password']) && !empty($_POST['primer_nombre']) && !empty($_POST['primer_apellido']) ){
         
-        $sql = "UPDATE usuarios SET rut=':rut',password=':password',perfil=':perfil',primer_nombre=':primer_nombre',segundo_nombre=':segundo_nombre',primer_apellido=':primer_apellido',segundo_apellido=':segundo_apellido' WHERE id=':id_u'";
+        $sql = "UPDATE usuarios SET rut=':rut',password=':password', correo=':correo',perfil=':perfil',primer_nombre=':primer_nombre',segundo_nombre=':segundo_nombre',primer_apellido=':primer_apellido',segundo_apellido=':segundo_apellido' WHERE id=':id_u'";
         $stmt = $conn->prepare($sql);
         
         $id_u = $_POST['id_u'];
         $rut = $_POST['rut'];
         $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
         $perfil = $_POST['perfil'];
+        $correo = $_POST['correo'];
         $primer_nombre = $_POST['primer_nombre'];
         $segundo_nombre = $_POST['segundo_nombre'];
         $primer_apellido = $_POST['primer_apellido'];
@@ -19,6 +20,7 @@
 
         $stmt->bindParam(':id_u', $id);
         $stmt->bindParam(':rut', $rut);
+        $stmt->bindParam(':correo', $correo);
         $stmt->bindParam(':password', $password);
         $stmt->bindParam(':perfil', $perfil);
         $stmt->bindParam(':primer_nombre', $primer_nombre);
@@ -46,8 +48,6 @@
     <title>Modificar Usuarios</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-
-
 </head>
 <body>
     <?php 
@@ -86,6 +86,7 @@
                 <option value="0">Administrador</option>
             </select>
         </div>
+        <input type="text" name="correo" placeholder="correo">
         <input type="text" name="primer_nombre" placeholder="Primer Nombre">
         <input type="text" name="segundo_nombre" placeholder="Segundo Nombre">
         <input type="text" name="primer_apellido" placeholder="Primer Apellido">
