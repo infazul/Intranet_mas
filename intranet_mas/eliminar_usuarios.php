@@ -30,6 +30,14 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<?php 
+        require 'header.php'
+    ?>
+    <div class="sidenav">
+        <a href="registrar_usuarios.php">Registrar Usuarios</a>
+        <a href="eliminar_usuarios.php">Borrar Usuarios</a>
+        <a href="modificar_usuarios.php">Modificar Usuarios</a>
+    </div>   
 
 <?php if(!empty($mensaje)): ?>
       <p> <?= $mensaje ?></p>

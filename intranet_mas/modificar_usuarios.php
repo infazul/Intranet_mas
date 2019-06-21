@@ -50,10 +50,15 @@
 
 </head>
 <body>
+    <?php 
+        require 'header.php'
+    ?>
+    <div class="sidenav">
+        <a href="registrar_usuarios.php">Registrar Usuarios</a>
+        <a href="eliminar_usuarios.php">Borrar Usuarios</a>
+        <a href="modificar_usuarios.php">Modificar Usuarios</a>
+    </div>   
     <form action="modificar_usuarios.php" method="post">
-        <?php             
-            require 'header.php';     
-        ?>
         <?php if(!empty($mensaje)): ?>
             <p> <?= $mensaje ?></p>
         <?php endif; ?>

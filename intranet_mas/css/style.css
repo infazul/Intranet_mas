@@ -9,12 +9,12 @@ body {
   /* Input Forms*/
   input[type="text"], input[type="password"]{
     outline: none;
-    padding: 20px;
+    padding: 10px;
     display: block;
     width: 300px;
     border-radius: 3px;
     border: 1px solid #eee;
-    margin: 20px auto;
+    margin: 15px auto;
   }
   
   input[type="submit"] {
@@ -47,7 +47,7 @@ body {
   */
 
   .caja {
-    margin:40px auto 40px auto;	
+    margin:20px auto 40px auto;	
     border:1px solid #d9d9d9;
     height:30px;
     overflow: hidden;
