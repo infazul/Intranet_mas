@@ -7,13 +7,13 @@
     if (isset($_SESSION['usuario'])) {
     $u = $_SESSION['usuario'];
     if ($u->getPerfil() == 0) {
-        header("Location: home_admin.php");
+        header("Location: ../vistas/home_admin.php");
     }elseif($u->getPerfil() == 1){
-        header("Location: home_profe.php");
+        header("Location: ../vistas/home_profe.php");
     }elseif($u->getPerfil() == 2){
-        header("Location: home_apod.php");
+        header("Location: ../vistas/home_apod.php");
     }elseif($u->getPerfil() == 4){
-        header("Location: home_alumn.php");
+        header("Location: ../vistas/home_alumn.php");
     }
     
   }
@@ -45,13 +45,13 @@
         $_SESSION['usuario'] = $u;
 
         if ($u->getPerfil() == 0) {
-            header("Location: home_admin.php");
+            header("Location: ../vistas/home_admin.php");
         }elseif ($u->getPerfil() == 1) {
-            header("Location: home_profe.php");
+            header("Location: ../vistas/home_profe.php");
         }elseif ($u->getPerfil() == 2) {
-            header("Location: home_apod.php");
+            header("Location: ../vistas/home_apod.php");
         }elseif ($u->getPerfil() == 3) {
-            header("Location: home_alumn.php");
+            header("Location: ../vistas/home_alumn.php");
         }else{
             $message = 'Error';
         }

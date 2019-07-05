@@ -6,7 +6,7 @@ session_start();
 
 $u = new usuario();
 $u = $_SESSION['usuario'];    
-$mensaje = $u->getCorreo();
+//$mensaje = $u->getNombre();
 if ($u->getPerfil() == 0 OR $u->getPerfil() == null) {
     header("Location: index.php");
 }
@@ -15,7 +15,7 @@ if(isset($_POST['enviar']))
 	if(!empty($_POST['para']) && !empty($_POST['asunto']) && !empty($_POST['texto']))
 	{
 		
-        $sql = "INSERT INTO mensaje (para, de, fecha, asunto, texto) VALUES (:para, :de, :fecha, :asunto, :texto)";
+        $sql = "INSERT INTO mensajes (destinatario, remitente, fecha, asunto, mensaje) VALUES (:destinatario, :remitente, :fecha, :asunto, :mensaje)";
         $stmt = $conn->prepare($sql);
         
         $para = $_POST['para'];
@@ -24,11 +24,14 @@ if(isset($_POST['enviar']))
         $asunto = $_POST['asunto'];
         $texto = $_POST['texto'];
 
-        $stmt->bindParam(':para', $para);
-        $stmt->bindParam(':de', $de);
+        $stmt->bindParam(':destinatario', $para);
+        $stmt->bindParam(':remitente', $de);
         $stmt->bindParam(':fecha', $fecha);
         $stmt->bindParam(':asunto', $asunto);
-        $stmt->bindParam(':texto', $texto);
+        $stmt->bindParam(':mensaje', $texto);
+
+
+    
 
         if ($stmt->execute()) {
             $mensaje = 'Mensaje enviado';

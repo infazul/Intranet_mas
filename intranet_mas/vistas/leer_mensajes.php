@@ -1,15 +1,16 @@
 <?php
     require '../db/database.php';
     require '../clases/usuario.php';
-    if(!isset($_SESSION)) 
-    { 
-        session_start(); 
-    } 
+    session_start();
     $u = new usuario();
-    $u = $_SESSION['usuario'];    
+    $u = $_SESSION['usuario']; 
     if ($u->getPerfil() == 0 OR $u->getPerfil() == null) {
         header("Location: index.php");
     }
+    $id = $_GET['id'];
+    $sql = 'SELECT * FROM mensajes WHERE destinatario="'.$u->getCorreo().'" and id="'.$id.'"';
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +21,7 @@
     <title>Mensajes</title>
 </head>
 <body>
-    <?php 
+<?php 
         require '../parciales/header.php';
 
         if ($u->getPerfil() == 3) {
@@ -41,17 +42,32 @@
             <a href="foro.php">Foro</a>
             <a href="mensajes.php">Mensajes</a>
         </div>';
-        }
-    ?>
 
-<?php
-    $sql = 'SELECT * FROM mensajes WHERE destinatario="'.$u->getCorreo().'" AND leido IS NULL';
-    $stmt = $conn->prepare($sql);
-    $stmt->execute();
-    $cuenta = $stmt->rowCount();
+        }
+        echo $u->getNombre() . " " . $u->getApellido(). "<br/>";
+
     ?>
-    Menu: <a href="listar_mensajes.php">Ver mensajes</a> | <a href="crear_mensaje.php">Crear mensajes</a><br /><br />
-    Hola <?=$u->getNombre()?>, Usted tiene <?=$cuenta?> mensajes sin leer.
+    Menu: <a href="listar_mensajes.php">Ver mensajes</a> | <a href="crear_mensaje.php">Crear mensajes</a> <br/>
+    <?php foreach ($stmt as $row){ ?>
+<strong>De:</strong> <?=$row['remitente']?><br />
+<strong>Fecha:</strong> <?=$row['fecha']?><br />
+<strong>Asunto:</strong> <?=$row['asunto']?><br /><br />
+<strong>Mensaje:</strong><br /><br />
+<?=$row['mensaje']?>
+
+<?php 
+# Avisamos que ya lo leimos
+if($row['leido'] != "si")
+{
+    $query = 'UPDATE mensajes SET leido="si" WHERE ID="'.$id.'"';
+    $stmt2 = $conn->prepare($query);
+    $stmt2->execute();
+}
+?>    
+    
+    <?php } ?>
+
+
 </body>
 </html>
 

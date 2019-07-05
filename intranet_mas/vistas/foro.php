@@ -7,7 +7,7 @@
     } 
     $u = new usuario();
     $u = $_SESSION['usuario'];    
-    if ($u->getPerfil() == 0 OR $u->getPerfil() == null) {
+    if ($u->getPerfil() == 0) {
         header("Location: index.php");
     }
 ?>
@@ -17,9 +17,10 @@
     <meta charset="UTF-8">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
-    <title>Mensajes</title>
+    <title>Menu Alumno</title>
 </head>
 <body>
+    
     <?php 
         require '../parciales/header.php';
 
@@ -43,15 +44,10 @@
         </div>';
         }
     ?>
-
-<?php
-    $sql = 'SELECT * FROM mensajes WHERE destinatario="'.$u->getCorreo().'" AND leido IS NULL';
-    $stmt = $conn->prepare($sql);
-    $stmt->execute();
-    $cuenta = $stmt->rowCount();
-    ?>
-    Menu: <a href="listar_mensajes.php">Ver mensajes</a> | <a href="crear_mensaje.php">Crear mensajes</a><br /><br />
-    Hola <?=$u->getNombre()?>, Usted tiene <?=$cuenta?> mensajes sin leer.
+	<div class="cont">
+		<h1>Foro</h1></br>
+		
+	</div>
+	    
 </body>
 </html>
-

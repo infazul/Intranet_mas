@@ -17,7 +17,7 @@
     <meta charset="UTF-8">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
-    <title>Menu Apoderado</title>
+    <title>Menu Alumno</title>
 </head>
 <body>
     <?php 
@@ -28,7 +28,10 @@
         <a href="foro.php">Foro</a>
         <a href="mensajes.php">Mensajes</a>
     </div> 
-
+	<div class="cont">
+		<h1>Avance del alumno</h1></br>
+		
+	</div>
     
 </body>
 </html>

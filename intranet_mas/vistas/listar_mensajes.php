@@ -9,9 +9,10 @@ if ($u->getPerfil() == 0 OR $u->getPerfil() == null) {
     header("Location: index.php");
 }
 # Buscamos los mensajes privados
-$sql = 'SELECT * FROM mensaje WHERE para="'.$u->getCorreo().'"';
+$sql = 'SELECT * FROM mensajes WHERE destinatario="'.$u->getCorreo().'"';
 $stmt = $conn->prepare($sql);
 $stmt->execute();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,6 +46,7 @@ $stmt->execute();
         </div>';
 
         }
+        echo $u->getNombre() . " " . $u->getApellido(). "<br/>";
 
     ?>
 
@@ -63,8 +65,8 @@ Menu: | <a href="crear_mensaje.php">Crear mensajes</a> |<br /><br />
     foreach ($stmt as $row){ ?>
     <tr bgcolor="<?php if($row['leido'] == "si") { echo "#90dcf5"; } else { if($i%2==0) { echo "#7ec0d6"; } else { echo "#FFCAB0"; } } ?>">
       <td align="center" valign="top"><?=$row['id']?></td>
-      <td align="center" valign="top"><a href="leer.php?id=<?=$row['id']?>"><?=$row['asunto']?></a></td>
-      <td align="center" valign="top"><?=$row['de']?></td>
+      <td align="center" valign="top"><a href="leer_mensajes.php?id=<?=$row['id']?>"><?=$row['asunto']?></a></td>
+      <td align="center" valign="top"><?=$row['remitente']?></td>
 	  <td align="center" valign="top"><?=$row['fecha']?></td>
     </tr>
 <?php $i ++;
